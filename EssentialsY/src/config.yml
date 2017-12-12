@@ -469,6 +469,11 @@ oversized-stacksize: 64
 # essentials.repair.enchanted
 repair-enchanted: true
 
+# Restrict Items from being repaired
+# Bypass Permission: essentials.repair.bypassrestrictions
+restricted-items-for-repair:
+- diamond_sword
+
 # Allow 'unsafe' enchantments in kits and item spawning.
 # Warning: Mixing and overleveling some enchantments can cause issues with clients, servers and plugins.
 unsafe-enchantments: false
