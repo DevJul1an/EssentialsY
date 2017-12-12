@@ -46,10 +46,6 @@ public class Commandrepair extends EssentialsCommand {
         if (!item.getEnchantments().isEmpty() && !ess.getSettings().getRepairEnchanted() && !user.isAuthorized("essentials.repair.enchanted")) {
             throw new Exception(tl("repairEnchanted"));
         }
-        
-        if (ess.getSettings().getRepairRestrictions().contains(item.getType()) && !user.isAuthorized("essentials.repair.bypassrestrictions")) {
-            throw new Exception(tl("repairRestrictedItem", item.getType()));
-        }
 
         final String itemName = item.getType().toString().toLowerCase(Locale.ENGLISH);
         final Trade charge = new Trade("repair-" + itemName.replace('_', '-'), new Trade("repair-" + item.getType(), new Trade("repair-item", ess), ess), ess);
@@ -87,6 +83,10 @@ public class Commandrepair extends EssentialsCommand {
 
         if (item.getDurability() == 0) {
             throw new Exception(tl("repairAlreadyFixed"));
+        }
+        
+        if (ess.getSettings().getRepairRestrictions().contains(item.getType()) && !user.isAuthorized("essentials.repair.bypassrestrictions")) {
+            throw new Exception(tl("repairRestrictedItem", item.getType()));
         }
 
         item.setDurability((short) 0);
