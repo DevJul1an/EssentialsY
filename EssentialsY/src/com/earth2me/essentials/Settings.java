@@ -435,7 +435,13 @@ public class Settings implements net.ess3.api.ISettings {
     
     @Override
     public List<Material> getRepairRestrictions() {
-        return (List<Material>) config.getList("restricted-items-for-repair");
+        List<Material> restrictions = new ArrayList<>();
+        
+        for(String string : config.getStringList("restricted-items-for-repair")) {
+            restrictions.add(Material.valueOf(string.toUpperCase()));
+        }
+        
+        return restrictions;
     }
 
     private final Map<String, String> chatFormats = Collections.synchronizedMap(new HashMap<String, String>());
