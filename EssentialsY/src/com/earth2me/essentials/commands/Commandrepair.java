@@ -48,7 +48,7 @@ public class Commandrepair extends EssentialsCommand {
         }
         
         if (ess.getSettings().getRepairRestrictions().contains(item.getType()) && !user.isAuthorized("essentials.repair.bypassrestrictions")) {
-            throw new Exception(tl("repairRestrictedItem"));
+            throw new Exception(tl("repairRestrictedItem", item.getType()));
         }
 
         final String itemName = item.getType().toString().toLowerCase(Locale.ENGLISH);
