@@ -432,6 +432,11 @@ public class Settings implements net.ess3.api.ISettings {
     public String getBackupCommand() {
         return config.getString("backup.command", null);
     }
+    
+    @Override
+    public List<Material> getRepairRestrictions() {
+        return (List<Material>) config.getList("restricted-items-for-repair");
+    }
 
     private final Map<String, String> chatFormats = Collections.synchronizedMap(new HashMap<String, String>());
 
